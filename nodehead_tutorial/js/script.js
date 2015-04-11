@@ -1,6 +1,26 @@
 // Mixing jQuery and Node.js code in the same file? Yes please!
 
 var main = function() {/* Push the body and the nav over by 285px over */
+  $('#one').click(function() {
+    console.log("i got clicked");
+    spawn = require('child_process').spawn,
+    ls    = spawn('adb', ['devices']); // the second arg is the command 
+    ls.stdout.on('data', function (data) {    // register one or more handlers
+      console.log('stdout: ' + data);
+      $( "#one" ).html( "<p>"+data+"</p>" );
+    });
+  });
+
+  $('#two').click(function() {
+    console.log("i got clicked");
+    spawn = require('child_process').spawn,
+    ls    = spawn('lsusb'); // the second arg is the command 
+    ls.stdout.on('data', function (data) {    // register one or more handlers
+      console.log('stdout: ' + data);
+      $( "#two" ).html( "<p>"+data+"</p>" );
+    });
+  });
+
   $('.icon-menu').click(function() {
     $('.menu').animate({
       left: "0px"
@@ -13,7 +33,7 @@ var main = function() {/* Push the body and the nav over by 285px over */
 	console.log("menu got clicked");
 	var util  = require('util'),
     spawn = require('child_process').spawn,
-    ls    = spawn('brew', ['update']); // the second arg is the command 
+    ls    = spawn('adb', ['devices']); // the second arg is the command 
     
     //ls    = spawn('ls', ['-lh', '/usr']); // the second arg is the command 
                                           // options

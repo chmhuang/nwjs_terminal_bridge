@@ -6,6 +6,12 @@ body {
   position: relative;
 }
 
+.rectangle {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+}
+
 /* Initial menu */
 .menu {
   left: -285px;  /* start off behind the scenes */
