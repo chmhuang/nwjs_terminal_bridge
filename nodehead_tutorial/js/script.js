@@ -4,7 +4,7 @@ var main = function() {/* Push the body and the nav over by 285px over */
   $('#one').click(function() {
     console.log("i got clicked");
     spawn = require('child_process').spawn,
-    ls    = spawn('adb', ['devices']); // the second arg is the command 
+    ls    = spawn('adb', ['shell', 'netcfg']); // the second arg is the command 
     ls.stdout.on('data', function (data) {    // register one or more handlers
       console.log('stdout: ' + data);
       $( "#one" ).html( "<p>"+data+"</p>" );
